@@ -49,6 +49,7 @@ img {
 
 .header {
     border-bottom: 1px solid #e7e9fc;
+    box-shadow: 0px 1px 6px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16), 0px 2px 1px 0px rgba(46, 47, 66, 0.08);
 }
 
 .container {
@@ -109,17 +110,18 @@ img {
 
 .nav-item:hover::after {
     display: block;
-    background-color: #404BBF;
+    background-color: #404bbf;    
     content: '';
     width: 100%;
     height: 4px;
     position: absolute;
-    bottom: 0;
-    border-radius: 4px;
+    left: 0;
+    bottom: -1px;
+    border-radius: 2px;
 }
 
-.nav-item:active,
 .nav-item:hover,
+.nav-item:active,
 .nav-item:focus {
     color: #404BBF;
 }
@@ -157,7 +159,9 @@ img {
     background-color: #2E2F42;
     color: #fff;
     padding: 188px 0;
-    background-image: linear-gradient( #2E2F42B2, #2E2F42B2), 
+    max-width: 1440px;
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)), 
     url("../images/hero-bg-image.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -241,15 +245,14 @@ img {
     border: 1px solid #8E8F99;
     border-radius: 4px;
     height: 112px;
-    position: relative;
     margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .about-icon {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    fill: #2E2F42;
 }
 
 .about-title {
@@ -305,7 +308,7 @@ img {
 }
 
 .team-member-info {
-    padding: 32px 16px;
+    padding: 32px 0;
 }
 
 .team-member {
@@ -329,31 +332,31 @@ img {
 
 .team-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 24px;
 }
 
-.team-link-wrapper {
-    background-color: #4D5AE5;
-    border-radius: 50%;
+.team-icon-item {
     width: 40px;
     height: 40px;
-    position: relative;
-
-    transition-property: background-color;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.team-link-wrapper:hover,
-.team-link-wrapper:focus {
-    background-color: #404BBF;
+.team-icon-link {
+    width: 100%;
+    height: 100%;
+    background-color: #4d5ae5;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-icon-link:hover,
+.team-icon-link:focus {
+    background-color: #404bbf;
 }
 
 .team-icon {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     fill: #F4F4FD;
 }
 
@@ -390,18 +393,14 @@ img {
 
 .portfolio-item {
     width: calc((100% - 48px) / 3);
-    border: 1px solid var(--CORNFLOWER, #E7E9FC);
-
-    transition-property: border, box-shadow;
-        transition-duration: 250ms;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-    transform: translateY(0);
+    border: 1px solid #E7E9FC;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
 .portfolio-item:hover {
-    border: 1px solid var(--CLOUD, #F4F4FD);
+    border: 1px solid #F4F4FD;
     box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16), 0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+    transform: translateY(0%);
 }
 
 .portfolio-image {
@@ -409,32 +408,19 @@ img {
     overflow: hidden;
 }
 
-.portfolio-overlay {
+.overlay-text {
     position: absolute;
-    inset: 0;
-    transform: translateY(100%);
+    top: 0;
     color: #F4F4FD;
     background-color: #4D5AE5;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 40px;
-
-    transition-property: transform;
-        transition-duration: 250ms;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-}
-
-.portfolio-item:hover .portfolio-overlay {
-    transform: translateY(0);
-}
-
-.overlay-text {
-    color: #F4F4FD;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 1.5;
-        letter-spacing: 0.02em;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    padding: 40px 32px;
+    height: 100%;
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-elem-info {
@@ -473,7 +459,11 @@ img {
 
 .footer .container {
     display: flex;
-    gap: 120px;
+    align-items: baseline;
+}
+
+.footer-info-container {
+    margin-right: 120px;
 }
 
 .footer-logo {
@@ -503,8 +493,7 @@ img {
 }
 
 .footer-title {
-    color: var(--WHITE, #FFF);
-        font-family: Roboto;
+    color: #FFFFFF;
         font-size: 16px;
         font-weight: 500;
         line-height: 1.5;
@@ -518,27 +507,28 @@ img {
     justify-content: space-between;
 }
 
-.footer-link-wrapper {
+
+
+.footer-icon-item {
     background-color: #4D5AE5;
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    position: relative;
-
-    transition-property: background-color;
-        transition-duration: 250ms;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer-link-wrapper:hover,
-.footer-link-wrapper:focus {
+.footer-icon-item:hover,
+.footer-icon-item:focus {
     background-color: #31D0AA;
 }
 
+.footer-icon-link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .footer-icon {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     fill: #F4F4FD;
 }
